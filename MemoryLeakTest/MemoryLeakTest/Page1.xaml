@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FFImageLoadingTest"
+		xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="MemoryLeakTest.Page1">
+    <ContentPage.Content>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+            <StackLayout
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            BackgroundColor="Gray"
+            Grid.Row="0">
+            </StackLayout>
+        <controls:CarouselViewControl ItemsSource="{Binding Items}" x:Name="CarouselImages" HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand"  AnimateTransition="true" InterPageSpacing="10" Orientation="Horizontal" Grid.Row="1">
+            <controls:CarouselViewControl.ItemTemplate>
+                <DataTemplate>
+                    <ContentView IsClippedToBounds="True">
+                        <ContentView.Content>
+                            <ffimageloading:CachedImage CacheType="Disk" Source="{Binding Url}" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" DownsampleUseDipUnits="True" DownsampleToViewSize="true" LoadingPlaceholder="loading.png" ErrorPlaceholder="error.png"/>
+                        </ContentView.Content>
+                    </ContentView>
+                </DataTemplate>
+            </controls:CarouselViewControl.ItemTemplate>
+        </controls:CarouselViewControl>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>
