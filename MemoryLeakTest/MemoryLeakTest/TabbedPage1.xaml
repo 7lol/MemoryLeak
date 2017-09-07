@@ -5,6 +5,22 @@
              xmlns:local="clr-namespace:MemoryLeakTest"
             >
   <!--Pages can be added as references or inline-->
-  <local:Page1 Title="Tab 1" />
-    <local:Page2 Title="Tab 2" />
+    <NavigationPage>
+        <x:Arguments>
+        <local:Page3 Title="CarouselView">
+            <x:Arguments>
+                <local:Page1 />
+            </x:Arguments>
+            </local:Page3>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage>
+        <x:Arguments>
+            <local:Page3 Title="ListView" >
+                <x:Arguments>
+                    <local:Page2/>
+                </x:Arguments>
+            </local:Page3>
+        </x:Arguments>
+    </NavigationPage>
 </TabbedPage>
